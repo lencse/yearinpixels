@@ -6,5 +6,24 @@
   "main": "server.js",
   "author": "Levente Löki <leventeloki@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "nodemon": "^1.18.9",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  },
+  "scripts": {
+    "migrate": "db-migrate up",
+    "dev": "yarn dev-dotenv && yarn dev-db && yarn migrate",
+    "dev-dotenv": "cp -n .env.example .env || :",
+    "dev-db": "(docker start yip_postgres || docker run --rm --name yip_postgres -e POSTGRES_PASSWORD=postgres -p 5605:5432 -d postgres) && sleep 3",
+    "clean-build": "rm -rf build",
+    "build-typescript": "tsc -p . --outDir ./build",
+    "build": "yarn clean-build && yarn build-typescript",
+    "watch-typescript": "tsc -p . --outDir ./build --watch --pretty",
+    "watch-server": "nodemon server.js",
+    "watch": "yarn clean-build && yarn build-typescript && (yarn watch-typescript & yarn watch-server)",
+    "lint": "tslint -c tslint.json -p .",
+    "test-all": "yarn lint"
+  }
 }
