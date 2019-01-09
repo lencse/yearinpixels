@@ -1,7 +1,11 @@
 import * as Koa from 'koa'
 import * as Router from 'koa-router'
 import * as json from 'koa-json'
+import 'reflect-metadata'
+import { injectable } from 'inversify'
+// import { SCALARS } from '../../dic/params'
 
+@injectable()
 export default class Webserver {
 
     private koa: Koa

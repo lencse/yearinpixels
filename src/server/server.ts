@@ -1,5 +1,5 @@
-import Webserver from './infrastructure/WebServer'
+import dic from './infrastructure/dic/dic'
 
 export function server() {
-    return new Webserver()
+    return dic.server
 }
