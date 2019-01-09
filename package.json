@@ -1,0 +1,10 @@
+{
+  "name": "yearinpixels",
+  "description": "Year in pixels",
+  "version": "1.0.0",
+  "repository": "https://github.com/lencse/yearinpixels",
+  "main": "server.js",
+  "author": "Levente Löki <leventeloki@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
