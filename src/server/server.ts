@@ -1,7 +1,5 @@
+import Webserver from './infrastructure/WebServer'
+
 export function server() {
-    return {
-        run() {
-            console.info('Server started')
-        }
-    }
+    return new Webserver()
 }
