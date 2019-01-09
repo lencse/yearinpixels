@@ -1,5 +1,7 @@
 import { Container } from 'inversify'
 import Webserver from '../server/Webserver'
+import { SCALARS } from './params'
+import config from '../../../../config/server/config'
 // import { TYPES, SCALARS } from './params'
 // import config from '../../../config/config'
 
@@ -21,6 +23,7 @@ class DIC {
     }
 
     private initScalars(): void {
+        this.container.bind<number>(SCALARS.Webserver.PortNumber).toConstantValue(config.portNumber)
     }
 
     public get server(): Webserver {

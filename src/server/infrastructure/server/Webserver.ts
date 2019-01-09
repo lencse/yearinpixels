@@ -2,8 +2,8 @@ import * as Koa from 'koa'
 import * as Router from 'koa-router'
 import * as json from 'koa-json'
 import 'reflect-metadata'
-import { injectable } from 'inversify'
-// import { SCALARS } from '../../dic/params'
+import { injectable, inject } from 'inversify'
+import { SCALARS } from '../dic/params'
 
 @injectable()
 export default class Webserver {
@@ -12,7 +12,9 @@ export default class Webserver {
 
     private router: Router
 
-    constructor() {
+    constructor(
+        @inject(SCALARS.Webserver.PortNumber) private portNumber: number
+    ) {
         this.koa = new Koa()
         this.router = new Router()
         this.setup()
@@ -23,8 +25,8 @@ export default class Webserver {
             .use(this.router.routes())
             .use(this.router.allowedMethods())
 
-        this.koa.listen(5600)
-        console.info(`Started webserver: http://localhost:${5600}`)
+        this.koa.listen(this.portNumber)
+        console.info(`Started webserver: http://localhost:${this.portNumber}`)
     }
 
     private setup(): void {
