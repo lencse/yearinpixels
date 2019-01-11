@@ -54,6 +54,10 @@ jobs:
         steps:
             - checkout
 
+            - run: sudo apt-get install -y python3-pip
+
+            - run: sudo pip3 install awscli
+
             - run: aws s3 sync s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/build build --region us-east-1 --delete
 
             - run: aws s3 sync s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/public public --region us-east-1 --delete
