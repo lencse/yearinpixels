@@ -47,7 +47,7 @@ jobs:
 
     deploy-to-staging:
         docker:
-            - image: buildpack-deps:trusty
+            - image: circleci/node:10.15
 
         working_directory: ~/repo
 
