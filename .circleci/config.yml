@@ -37,11 +37,13 @@ jobs:
 
             - run: yarn test-all
 
-            - store_artifacts:
-                path: build
+            - run: aws s3 sync build s3://lencse-circleci-artifacts/x/public --region us-east-1
 
-            - store_artifacts:
-                path: public
+            # - store_artifacts:
+            #     path: build
+
+            # - store_artifacts:
+            #     path: public
 
     deploy-to-staging:
         docker:
