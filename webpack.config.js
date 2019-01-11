@@ -5,7 +5,7 @@ const LiveReloadPlugin = require('webpack-livereload-plugin')
 const commandLineArgs = require('command-line-args')
 const webpackMerge = require('webpack-merge')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin')
 const cssnano = require('cssnano')
 
@@ -51,7 +51,8 @@ const extra = devMode ?
 
 const filenames = {
     js: devMode ? '[name].js' : '[name].[hash].js',
-    css: devMode ? '[name].css' : '[name].[hash].css'
+    css: devMode ? '[name].css' : '[name].[hash].css',
+    cssChunks: devMode ? '[id].css' : '[id].[hash].css'
 }
 
 module.exports = webpackMerge(
@@ -71,16 +72,23 @@ module.exports = webpackMerge(
                 filename: 'index.html',
                 inject: 'body'
             }),
-            new ExtractTextPlugin(filenames.css)
+            new MiniCssExtractPlugin({
+                filename: filenames.css,
+                chunkFilename: filenames.cssChunks
+            })
         ],
         module: {
             rules: [
                 {
                     test: /\.scss$/,
-                    use: ExtractTextPlugin.extract({
-                        fallback: 'style-loader',
-                        use: ['css-loader', 'sass-loader']
-                    })
+                    use: [
+                        {
+                            loader: MiniCssExtractPlugin.loader,
+                            options: {}
+                        },
+                        'css-loader',
+                        'sass-loader'
+                    ]
                 }
             ]
         },

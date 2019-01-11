@@ -1,1 +1,1 @@
-console.info('App started')
+console.info('App started!')
