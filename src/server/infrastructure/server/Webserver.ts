@@ -1,6 +1,7 @@
 import * as Koa from 'koa'
 import * as Router from 'koa-router'
 import * as json from 'koa-json'
+import * as serve from 'koa-static'
 import 'reflect-metadata'
 import { injectable, inject } from 'inversify'
 import { SCALARS } from '../dic/params'
@@ -22,6 +23,7 @@ export default class Webserver {
 
     public run(): void {
         this.koa.use(json())
+            .use(serve('./public'))
             .use(this.router.routes())
             .use(this.router.allowedMethods())
 

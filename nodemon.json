@@ -4,6 +4,9 @@
         "public",
         ".DS_Store",
         ".git",
-        "logs"
+        "logs",
+        "build/src/frontend",
+        "build/views",
+        "styles"
     ]
 }
