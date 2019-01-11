@@ -52,6 +52,8 @@ jobs:
         steps:
             - checkout
 
+            - run: echo $CIRCLE_ARTIFACTS
+
             - run: find $CIRCLE_ARTIFACTS
 
             - run: find .
