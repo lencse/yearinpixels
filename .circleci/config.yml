@@ -37,7 +37,9 @@ jobs:
 
             - run: yarn test-all
 
-            - run: aws s3 sync build s3://lencse-circleci-artifacts/x/public --region us-east-1
+            - run: sudo pip install awscli
+
+            - run: aws s3 sync build s3://lencse-circleci-artifacts/x/public --region us-east-1 --delete
 
             # - store_artifacts:
             #     path: build
