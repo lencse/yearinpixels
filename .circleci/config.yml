@@ -36,6 +36,13 @@ jobs:
             - run: yarn build
 
             - run: yarn test-all
+
+            - store_artifacts:
+                path: build
+
+            - store_artifacts:
+                path: public
+
     deploy-to-staging:
         docker:
             - image: buildpack-deps:trusty
