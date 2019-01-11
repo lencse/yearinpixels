@@ -58,11 +58,17 @@ jobs:
 
             - run: sudo pip3 install awscli
 
-            - run: aws s3 sync s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/build build --region us-east-1 --delete
+            - run: aws s3 sync s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/build dist/build --region us-east-1 --delete
 
-            - run: aws s3 sync s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/public public --region us-east-1 --delete
+            - run: aws s3 sync s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/public dist/public --region us-east-1 --delete
 
-            - run: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAGING.git master
+            - run find .
+
+            - run git add .
+
+            - run git commit -m "Dist"
+
+            - run: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAGING.git master --force
 
 workflows:
     version: 2

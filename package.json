@@ -63,6 +63,7 @@
     "watch-webpack": "webpack --watch",
     "watch": "yarn clean-build && yarn build-typescript && yarn build-views-dev && (yarn watch-typescript & yarn watch-server & yarn watch-views & yarn watch-webpack)",
     "lint": "tslint -c tslint.json -p .",
-    "test-all": "yarn lint"
+    "test-all": "yarn lint",
+    "postinstall": "mv dist/public ./public && mv dist/build ./build"
   }
 }
