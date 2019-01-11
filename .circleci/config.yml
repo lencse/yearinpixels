@@ -41,7 +41,9 @@ jobs:
 
             - run: sudo pip3 install awscli
 
-            - run: aws s3 sync build s3://lencse-circleci-artifacts/x/public --region us-east-1 --delete
+            - run: aws s3 sync build s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/build --region us-east-1 --delete
+
+            - run: aws s3 sync public s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/public --region us-east-1 --delete
 
             # - store_artifacts:
             #     path: build
