@@ -37,6 +37,8 @@ jobs:
 
             - run: yarn test-all
 
+            - run: sudo apt-get install -y python3-pip
+
             - run: sudo pip install awscli
 
             - run: aws s3 sync build s3://lencse-circleci-artifacts/x/public --region us-east-1 --delete
