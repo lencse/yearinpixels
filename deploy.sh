@@ -5,5 +5,7 @@ if [ "$HEROKU" = "true" ]; then
     yarn build
     export DATABASE_CONNECTION_URL=$DATABASE_URL
     unset DATABASE_URL
+    echo "DATABASE_CONNECTION_URL = $DATABASE_CONNECTION_URL"
+    echo "DATABASE_URL = $DATABASE_URL"
     db-migrate --config db-config.js --env prod up
 fi
