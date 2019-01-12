@@ -7,5 +7,6 @@ if [ "$HEROKU" = "true" ]; then
     unset DATABASE_URL
     echo "DATABASE_CONNECTION_URL = $DATABASE_CONNECTION_URL"
     echo "DATABASE_URL = $DATABASE_URL"
+    yarn add pg-native
     db-migrate --config db-config.js --env prod up
 fi

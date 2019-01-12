@@ -8,6 +8,9 @@ const config = {
         url: process.env.DATABASE_CONNECTION_URL || process.env.DATABASE_URL,
         addIfNotExists: {
             sslmode: 'require'
+        },
+        overwrite: {
+            native: true
         }
     }
 }
