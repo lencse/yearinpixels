@@ -47,7 +47,7 @@
     "webpack-merge": "^4.2.1"
   },
   "scripts": {
-    "migrate": "db-migrate --config db-config.js up",
+    "migrate": "db-migrate up",
     "dev": "yarn dev-dotenv && yarn dev-db && yarn migrate",
     "dev-dotenv": "cp -n .env.example .env || :",
     "dev-db": "(docker start yip_postgres || docker run --rm --name yip_postgres -e POSTGRES_PASSWORD=postgres -p 5605:5432 -d postgres) && sleep 3",

@@ -1,11 +1,11 @@
 module.exports = {
     dev: {
         driver: 'pg',
-        url: process.env.DATABASE_URL
+        url: process.env.DATABASE_CONNECTION_URL || process.env.DATABASE_URL
     },
     prod: {
         driver: 'pg',
-        url: process.env.DATABASE_URL,
+        url: process.env.DATABASE_CONNECTION_URL || process.env.DATABASE_URL,
         addIfNotExists: {
             sslmode: 'require'
         },

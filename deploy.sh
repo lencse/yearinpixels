@@ -3,5 +3,5 @@
 if [ "$HEROKU" = "true" ]; then
     echo "Build on Heroku"
     yarn build
-    db-migrate --config db-config.js --env prod up
+    DATABASE_CONNECTION_URL=$DATABASE_URL unset DATABASE_URL db-migrate --config db-config.js --env prod up
 fi
