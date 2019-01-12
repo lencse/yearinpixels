@@ -37,38 +37,16 @@ jobs:
 
             - run: yarn test-all
 
-            - run: sudo apt-get install -y python3-pip
-
-            - run: sudo pip3 install awscli
-
-            - run: aws s3 sync build s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/build --region us-east-1 --delete
-
-            - run: aws s3 sync public s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/public --region us-east-1 --delete
-
     deploy-to-staging:
         docker:
-            - image: circleci/node:10.15
+            - image: buildpack-deps:trusty
 
         working_directory: ~/repo
 
         steps:
             - checkout
 
-            - run: sudo apt-get install -y python3-pip
-
-            - run: sudo pip3 install awscli
-
-            - run: aws s3 sync s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/build dist/build --region us-east-1 --delete
-
-            - run: aws s3 sync s3://lencse-circleci-artifacts/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1/public dist/public --region us-east-1 --delete
-
-            - run: find .
-
-            - run: git add .
-
-            - run: git commit -m "Dist"
-
-            - run: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAGING.git master --force
+            - run: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAGING.git master
 
 workflows:
     version: 2
