@@ -5,6 +5,8 @@ import * as serve from 'koa-static'
 import 'reflect-metadata'
 import { injectable, inject } from 'inversify'
 import { SCALARS } from '../dic/params'
+//
+import { Pool } from 'pg'
 
 @injectable()
 export default class Webserver {
@@ -37,6 +39,13 @@ export default class Webserver {
                 status: 'OK',
                 code: 200
             }
+        })
+        this.router.get('/mig', async (ctx: Koa.Context, next) => {
+            const pool = new Pool({
+                connectionString: process.env.DATABASE_URL
+            })
+            const res = await pool.query('SELECT * FROM MIGRATIONS')
+            ctx.body = res.rows
         })
     }
 
