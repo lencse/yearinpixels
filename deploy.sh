@@ -5,7 +5,7 @@ if [ "$DEPLOY_STARTED" = "true" ]; then
 fi
 
 if [ "$HEROKU" = "true" ]; then
-    export DEPLOY_STARTED="0"
+    export DEPLOY_STARTED="true"
     echo "Build on Heroku"
     yarn build
     export DATABASE_CONNECTION_URL=$DATABASE_URL
