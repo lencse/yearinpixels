@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const LiveReloadPlugin = require('webpack-livereload-plugin')
 const commandLineArgs = require('command-line-args')
 const webpackMerge = require('webpack-merge')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin')
 const cssnano = require('cssnano')
@@ -29,14 +29,12 @@ const extra = devMode ?
         ]
     } : {
         mode: 'production',
+        optimization: {
+            minimizer: [
+                new TerserPlugin()
+            ]
+        },
         plugins: [
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    output: {
-                        comments: false
-                    }
-                }
-            }),
             new OptimizeCssPlugin({
                 cssProcessor: cssnano,
                 cssProcessorOptions: {
