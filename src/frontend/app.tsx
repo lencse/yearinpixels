@@ -5,9 +5,9 @@ import dic from './infrastructure/dic/dic'
 
 const app = dic.application
 
-app.run()
-
 ReactDom.render(
-    <Main />,
+    <Main dataProvider={ app } />,
     document.getElementById('react-root')
 )
+
+app.run()
