@@ -1,4 +1,5 @@
 export const TYPES = {
+    Webserver: Symbol('Webserver')
 }
 
 export const SCALARS = {

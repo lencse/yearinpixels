@@ -1,9 +1,9 @@
 import { Container } from 'inversify'
-import Webserver from '../server/Webserver'
-import { SCALARS } from './params'
+import KoaWebserver from '../server/KoaWebserver'
+import { TYPES, SCALARS } from './params'
 import config from '../../../../config/server/config'
-// import { TYPES, SCALARS } from './params'
-// import config from '../../../config/config'
+import Webserver from '../server/Webserver'
+import Server from '../server/Server'
 
 class DIC {
 
@@ -16,18 +16,19 @@ class DIC {
     }
 
     private initInterfaces() {
+        this.container.bind<Webserver>(TYPES.Webserver).to(KoaWebserver)
     }
 
     private initClasses() {
-        this.container.bind<Webserver>(Webserver).to(Webserver)
+        this.container.bind<Server>(Server).to(Server)
     }
 
     private initScalars(): void {
         this.container.bind<number>(SCALARS.Webserver.PortNumber).toConstantValue(config.portNumber)
     }
 
-    public get server(): Webserver {
-        return this.container.get<Webserver>(Webserver)
+    public get server(): Server {
+        return this.container.get<Server>(Server)
     }
 
 }

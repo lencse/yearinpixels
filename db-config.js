@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
     dev: {
         driver: 'pg',
         url: process.env.DATABASE_CONNECTION_URL || process.env.DATABASE_URL
@@ -14,7 +14,3 @@ const config = {
         }
     }
 }
-
-console.info(config)
-
-module.exports = config
