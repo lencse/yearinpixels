@@ -6,6 +6,8 @@ import 'reflect-metadata'
 import { injectable } from 'inversify'
 import { SCALARS } from '../dic/params'
 import Webserver from './Webserver'
+import CreateUser from '../../auth/CreateUser'
+import { userSerializer } from '../json-api/serializers'
 
 @injectable()
 export default class KoaWebserver implements Webserver {
@@ -21,6 +23,13 @@ export default class KoaWebserver implements Webserver {
 
     public staticDir(dir: string) {
         this.koa.use(serve(dir))
+    }
+
+    public createUserPath(path: string, handler: CreateUser): void {
+        this.router.post(path, async (ctx: Koa.Context, next) => {
+            const user = await handler.handle()
+            ctx.body = userSerializer.serialize(user)
+        })
     }
 
     public run(portNumber: number): void {
