@@ -1,7 +1,8 @@
 export const TYPES = {
     Webserver: Symbol('Webserver'),
     CreateUser: Symbol('CreateUser'),
-    UserSaver: Symbol('UserSaver')
+    UserSaver: Symbol('UserSaver'),
+    UuidGenerator: Symbol('UuidGenerator')
 }
 
 export const SCALARS = {
