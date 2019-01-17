@@ -1,7 +1,7 @@
 import CreateUser from '../../../../src/server/auth/CreateUser'
 import UserData from '../../../../src/server/auth/UserData'
 import UserSavingData from '../../../../src/server/auth/UserSavingData'
-import UserFactory from '../../../../src/server/auth/UserFactory';
+import UserFactory from '../../../../src/server/auth/UserFactory'
 
 describe('CreateUser', () => {
     it('User is created after the request', async () => {

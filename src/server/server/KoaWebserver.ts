@@ -8,6 +8,7 @@ import { SCALARS } from '../dic/params'
 import Webserver from './Webserver'
 import CreateUser from '../auth/CreateUser'
 import { userSerializer } from '../json-api/serializers'
+import GetUser from '../auth/GetUser'
 
 @injectable()
 export default class KoaWebserver implements Webserver {
@@ -25,9 +26,16 @@ export default class KoaWebserver implements Webserver {
         this.koa.use(serve(dir))
     }
 
-    public createUserPath(path: string, handler: CreateUser): void {
-        this.router.post(path, async (ctx: Koa.Context, next) => {
+    public createUser(handler: CreateUser): void {
+        this.router.post('/api/user', async (ctx: Koa.Context, next) => {
             const user = await handler.handle()
+            ctx.body = userSerializer.serialize(user)
+        })
+    }
+
+    public getUser(handler: GetUser): void {
+        this.router.get('/api/user/:id', async (ctx: Koa.Context, next) => {
+            const user = await handler.handle({id: ctx.params.id})
             ctx.body = userSerializer.serialize(user)
         })
     }
@@ -39,15 +47,6 @@ export default class KoaWebserver implements Webserver {
 
         this.koa.listen(portNumber)
         console.info(`Started webserver: http://localhost:${portNumber}`)
-    }
-
-    private setup(): void {
-        this.router.get('/status', async (ctx: Koa.Context, next) => {
-            ctx.body = {
-                status: 'OK',
-                code: 200
-            }
-        })
     }
 
 }

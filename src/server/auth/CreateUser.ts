@@ -19,9 +19,7 @@ export default class CreateUser {
         const data = await this.saver.saveUser({
             id: this.uuidGenerator.generate()
         })
-        return {
-            id: data.id
-        }
+        return this.userFactory.fromData(data)
     }
 
 }

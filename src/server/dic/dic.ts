@@ -11,6 +11,7 @@ import PgConnection from '../db/PgConnection'
 import UuidGenerator from '../uuid/UuidGenerator'
 import V4UuidGenerator from '../uuid/V4UuidGenerator'
 import UserFactory from '../auth/UserFactory'
+import GetUser from '../auth/GetUser'
 
 class DIC {
 
@@ -25,12 +26,14 @@ class DIC {
     private initInterfaces() {
         this.container.bind<Webserver>(TYPES.Webserver).to(KoaWebserver)
         this.container.bind<UserSaver>(TYPES.UserSaver).to(PgRepository)
+        this.container.bind<UserSaver>(TYPES.UserStore).to(PgRepository)
         this.container.bind<UuidGenerator>(TYPES.UuidGenerator).to(V4UuidGenerator)
     }
 
     private initClasses() {
         this.container.bind<Server>(Server).to(Server)
         this.container.bind<CreateUser>(CreateUser).to(CreateUser)
+        this.container.bind<GetUser>(GetUser).to(GetUser)
         this.container.bind<PgConnection>(PgConnection).to(PgConnection)
         this.container.bind<UserFactory>(UserFactory).to(UserFactory)
     }

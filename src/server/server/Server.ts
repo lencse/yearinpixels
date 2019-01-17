@@ -3,6 +3,7 @@ import Webserver from './Webserver'
 import { TYPES, SCALARS } from '../dic/params'
 import 'reflect-metadata'
 import CreateUser from '../auth/CreateUser'
+import GetUser from '../auth/GetUser'
 
 @injectable()
 export default class Server {
@@ -10,12 +11,14 @@ export default class Server {
     constructor(
         @inject(SCALARS.Webserver.PortNumber) private portNumber: number,
         @inject(TYPES.Webserver) private webserver: Webserver,
-        @inject(CreateUser) private createUser: CreateUser
+        @inject(CreateUser) private createUser: CreateUser,
+        @inject(GetUser) private getUser: GetUser
     ) {}
 
     public run(): void {
         this.webserver.staticDir('./public')
-        this.webserver.createUserPath('/api/users', this.createUser)
+        this.webserver.createUser(this.createUser)
+        this.webserver.getUser(this.getUser)
         this.webserver.run(this.portNumber)
     }
 
