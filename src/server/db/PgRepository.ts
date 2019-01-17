@@ -3,6 +3,7 @@ import UserData from '../auth/UserData'
 import { inject, injectable } from 'inversify'
 import 'reflect-metadata'
 import PgConnection from './PgConnection'
+import UserSavingData from '../auth/UserSavingData'
 
 @injectable()
 export default class PgRepository implements UserSaver {
@@ -11,7 +12,7 @@ export default class PgRepository implements UserSaver {
         @inject(PgConnection) private connection: PgConnection
     ) {}
 
-    public async saveUser(data: UserData): Promise<UserData> {
+    public async saveUser(data: UserSavingData): Promise<UserData> {
         const dbResult = await this.connection.pool.query(`
             INSERT INTO users (
                 id,

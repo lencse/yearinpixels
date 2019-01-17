@@ -1,7 +1,8 @@
 import UserData from './UserData'
+import UserSavingData from './UserSavingData'
 
 export default interface UserSaver {
 
-    saveUser(data: UserData): Promise<UserData>
+    saveUser(data: UserSavingData): Promise<UserData>
 
 }
