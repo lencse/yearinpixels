@@ -6,7 +6,7 @@ import 'reflect-metadata'
 import { injectable } from 'inversify'
 import { SCALARS } from '../dic/params'
 import Webserver from './Webserver'
-import CreateUser from '../../auth/CreateUser'
+import CreateUser from '../auth/CreateUser'
 import { userSerializer } from '../json-api/serializers'
 
 @injectable()

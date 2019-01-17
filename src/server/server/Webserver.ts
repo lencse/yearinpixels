@@ -1,4 +1,4 @@
-import CreateUser from '../../auth/CreateUser'
+import CreateUser from '../auth/CreateUser'
 
 export default interface Webserver {
 

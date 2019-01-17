@@ -2,7 +2,7 @@ import { injectable, inject } from 'inversify'
 import Webserver from './Webserver'
 import { TYPES, SCALARS } from '../dic/params'
 import 'reflect-metadata'
-import CreateUser from '../../auth/CreateUser'
+import CreateUser from '../auth/CreateUser'
 
 @injectable()
 export default class Server {

@@ -1,5 +1,5 @@
-import UserSaver from '../../auth/UserSaver'
-import UserData from '../../auth/UserData'
+import UserSaver from '../auth/UserSaver'
+import UserData from '../auth/UserData'
 import { inject, injectable } from 'inversify'
 import 'reflect-metadata'
 import PgConnection from './PgConnection'
