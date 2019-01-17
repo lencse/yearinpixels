@@ -10,6 +10,7 @@ import UserSaver from '../auth/UserSaver'
 import PgConnection from '../db/PgConnection'
 import UuidGenerator from '../uuid/UuidGenerator'
 import V4UuidGenerator from '../uuid/V4UuidGenerator'
+import UserFactory from '../auth/UserFactory'
 
 class DIC {
 
@@ -31,6 +32,7 @@ class DIC {
         this.container.bind<Server>(Server).to(Server)
         this.container.bind<CreateUser>(CreateUser).to(CreateUser)
         this.container.bind<PgConnection>(PgConnection).to(PgConnection)
+        this.container.bind<UserFactory>(UserFactory).to(UserFactory)
     }
 
     private initScalars(): void {

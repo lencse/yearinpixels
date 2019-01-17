@@ -1,6 +1,7 @@
 import CreateUser from '../../../../src/server/auth/CreateUser'
 import UserData from '../../../../src/server/auth/UserData'
 import UserSavingData from '../../../../src/server/auth/UserSavingData'
+import UserFactory from '../../../../src/server/auth/UserFactory';
 
 describe('CreateUser', () => {
     it('User is created after the request', async () => {
@@ -12,11 +13,13 @@ describe('CreateUser', () => {
             }
         }
         const handler = new CreateUser(
-            saver, {
+            saver,
+            {
                 generate(): string {
                     return 'x'
                 }
-            }
+            },
+            new UserFactory()
         )
 
         const result = await handler.handle()
