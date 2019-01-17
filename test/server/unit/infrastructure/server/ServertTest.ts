@@ -1,4 +1,4 @@
-import Server from '../../../../../src/server/infrastructure/server/Server'
+import Server from '../../../../../src/server/server/Server'
 import CreateUser from '../../../../../src/server/auth/CreateUser'
 
 describe('Server', () => {

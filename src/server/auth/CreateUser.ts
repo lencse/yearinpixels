@@ -1,9 +1,9 @@
 import User from './User'
 import 'reflect-metadata'
 import { inject, injectable } from 'inversify'
-import { TYPES } from '../infrastructure/dic/params'
+import { TYPES } from '../dic/params'
 import UserSaver from './UserSaver'
-import UuidGenerator from '../infrastructure/uuid/UuidGenerator'
+import UuidGenerator from '../uuid/UuidGenerator'
 
 @injectable()
 export default class CreateUser {
