@@ -27,14 +27,14 @@ export default class KoaWebserver implements Webserver {
     }
 
     public createUser(handler: CreateUser): void {
-        this.router.post('/api/user', async (ctx: Koa.Context, next) => {
+        this.router.post('/api/users', async (ctx: Koa.Context, next) => {
             const user = await handler.handle()
             ctx.body = userSerializer.serialize(user)
         })
     }
 
     public getUser(handler: GetUser): void {
-        this.router.get('/api/user/:id', async (ctx: Koa.Context, next) => {
+        this.router.get('/api/users/:id', async (ctx: Koa.Context, next) => {
             const user = await handler.handle({id: ctx.params.id})
             ctx.body = userSerializer.serialize(user)
         })
