@@ -6,16 +6,18 @@ version: 2
 jobs:
     build:
         docker:
-            - image: circleci/node:10.15
-              environment:
-                PORT: 5600
-                DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+            node:
+                image: circleci/node:10.15
+                environment:
+                    PORT: 5600
+                    DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
 
-            - image: circleci/postgres:11-alpine
-              environment:
-                POSTGRES_USER: postgres
-                POSTGRES_PASSWORD: postgres
-                POSTGRES_DB: postgres
+            pg:
+                image: circleci/postgres:11-alpine
+                environment:
+                    POSTGRES_USER: postgres
+                    POSTGRES_PASSWORD: postgres
+                    POSTGRES_DB: postgres
 
         working_directory: ~/repo
 

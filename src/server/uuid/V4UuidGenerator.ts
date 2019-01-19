@@ -1,4 +1,4 @@
-import * as uuid from 'uuid/v4'
+import * as uuidv4 from 'uuid/v4'
 import UuidGenerator from './UuidGenerator'
 import { injectable } from 'inversify'
 import 'reflect-metadata'
@@ -7,7 +7,7 @@ import 'reflect-metadata'
 export default class V4UuidGenerator implements UuidGenerator {
 
     public generate(): string {
-        return uuid()
+        return uuidv4()
     }
 
 }
