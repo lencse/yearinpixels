@@ -10,6 +10,7 @@ if [ "$HEROKU" = "true" ]; then
     yarn build
     export DATABASE_CONNECTION_URL=$DATABASE_URL
     unset DATABASE_URL
-    yarn add pg-native
+    yarn add --dev pg-native
     db-migrate --config db-config.js --env prod up
+    yarn remove pg-native
 fi
