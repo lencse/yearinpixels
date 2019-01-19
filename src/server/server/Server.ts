@@ -5,6 +5,7 @@ import 'reflect-metadata'
 import CreateUser from '../auth/CreateUser'
 import GetUser from '../auth/GetUser'
 import CreateEntry from '../calendar/CreateEntry'
+import GetDays from '../calendar/GetDays'
 
 @injectable()
 export default class Server {
@@ -14,7 +15,8 @@ export default class Server {
         @inject(TYPES.Webserver) private webserver: Webserver,
         @inject(CreateUser) private createUser: CreateUser,
         @inject(GetUser) private getUser: GetUser,
-        @inject(CreateEntry) private createEntry: CreateEntry
+        @inject(CreateEntry) private createEntry: CreateEntry,
+        @inject(GetDays) private getDays: GetDays
     ) {}
 
     public run(): void {
@@ -22,6 +24,7 @@ export default class Server {
         this.webserver.createUser(this.createUser)
         this.webserver.getUser(this.getUser)
         this.webserver.createCalendarEntry(this.createEntry)
+        this.webserver.getDays(this.getDays)
         this.webserver.run(this.portNumber)
     }
 

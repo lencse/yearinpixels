@@ -14,6 +14,11 @@ import UserFactory from '../auth/UserFactory'
 import GetUser from '../auth/GetUser'
 import CreateEntry from '../calendar/CreateEntry'
 import EntryFactory from '../calendar/EntryFactory'
+import EntrySaver from '../calendar/EntrySaver'
+import UserStore from '../auth/UserStore'
+import DayStore from '../calendar/DayStore'
+import GetDays from '../calendar/GetDays'
+import DayFactory from '../calendar/DayFactory'
 
 class DIC {
 
@@ -28,8 +33,9 @@ class DIC {
     private initInterfaces() {
         this.container.bind<Webserver>(TYPES.Webserver).to(KoaWebserver)
         this.container.bind<UserSaver>(TYPES.UserSaver).to(PgRepository)
-        this.container.bind<UserSaver>(TYPES.UserStore).to(PgRepository)
-        this.container.bind<UserSaver>(TYPES.EntrySaver).to(PgRepository)
+        this.container.bind<UserStore>(TYPES.UserStore).to(PgRepository)
+        this.container.bind<EntrySaver>(TYPES.EntrySaver).to(PgRepository)
+        this.container.bind<DayStore>(TYPES.DayStore).to(PgRepository)
         this.container.bind<UuidGenerator>(TYPES.UuidGenerator).to(V4UuidGenerator)
     }
 
@@ -41,6 +47,8 @@ class DIC {
         this.container.bind<EntryFactory>(EntryFactory).to(EntryFactory)
         this.container.bind<PgConnection>(PgConnection).to(PgConnection)
         this.container.bind<UserFactory>(UserFactory).to(UserFactory)
+        this.container.bind<GetDays>(GetDays).to(GetDays)
+        this.container.bind<DayFactory>(DayFactory).to(DayFactory)
     }
 
     private initScalars(): void {

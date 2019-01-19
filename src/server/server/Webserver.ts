@@ -1,6 +1,7 @@
 import CreateUser from '../auth/CreateUser'
 import GetUser from '../auth/GetUser'
 import CreateEntry from '../calendar/CreateEntry'
+import GetDays from '../calendar/GetDays'
 
 export default interface Webserver {
 
@@ -11,6 +12,8 @@ export default interface Webserver {
     createCalendarEntry(handler: CreateEntry): void
 
     getUser(handler: GetUser): void
+
+    getDays(handler: GetDays): void
 
     run(portNumber: number): void
 

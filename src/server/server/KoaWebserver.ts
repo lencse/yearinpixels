@@ -9,6 +9,7 @@ import CreateUser from '../auth/CreateUser'
 import GetUser from '../auth/GetUser'
 import CreateEntry from '../calendar/CreateEntry'
 import * as koaBody from 'koa-body'
+import GetDays from '../calendar/GetDays'
 
 @injectable()
 export default class KoaWebserver implements Webserver {
@@ -50,6 +51,13 @@ export default class KoaWebserver implements Webserver {
         this.router.get('/api/user/:id', async (ctx: Koa.Context, next) => {
             const user = await handler.handle({id: ctx.params.id})
             ctx.body = user
+        })
+    }
+
+    public getDays(handler: GetDays): void {
+        this.router.get('/api/calendar-day', async (ctx: Koa.Context, next) => {
+            const days = await handler.handle({userId: ctx.query.userId})
+            ctx.body = days
         })
     }
 

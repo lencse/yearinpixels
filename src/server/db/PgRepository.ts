@@ -8,12 +8,15 @@ import UserStore from '../auth/UserStore'
 import EntrySaver from '../calendar/EntrySaver'
 import EntryData from '../calendar/EntryData'
 import EntrySavingData from '../calendar/EntrySavingData'
+import DayData from '../calendar/DayData'
+import DayStore from '../calendar/DayStore'
 
 @injectable()
 export default class PgRepository implements
     UserSaver,
     UserStore,
-    EntrySaver {
+    EntrySaver,
+    DayStore {
 
     constructor(
         @inject(PgConnection) private connection: PgConnection
@@ -45,9 +48,8 @@ export default class PgRepository implements
             SELECT
                 id
             FROM
-                users u
-            WHERE 1=1
-                AND u.id = $1
+                users
+            WHERE id = $1
             `, [
                 id
             ]
@@ -106,4 +108,29 @@ export default class PgRepository implements
         }
     }
 
+    public async findDaysForUser(userId: string): Promise<DayData[]> {
+        const dbResult = await this.connection.pool.query(`
+            SELECT
+                id,
+                mood,
+                comment,
+                TO_CHAR(calendar_day, 'YYYY-MM-DD') AS calendar_day
+            FROM
+                calendar_days
+            WHERE user_id = $1
+            ORDER BY calendar_day
+            `, [
+                userId
+            ]
+        )
+
+        return dbResult.rows.map((dbRow) => {
+            return {
+                id: dbRow.id,
+                mood: dbRow.mood,
+                comment: dbRow.comment,
+                date: new Date(dbRow.calendar_day)
+            }
+        })
+    }
 }
