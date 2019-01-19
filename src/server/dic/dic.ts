@@ -19,6 +19,10 @@ import UserStore from '../auth/UserStore'
 import DayStore from '../calendar/DayStore'
 import GetDays from '../calendar/GetDays'
 import DayFactory from '../calendar/DayFactory'
+import PgUserSaver from '../db/PgUserSaver'
+import PgUserStore from '../db/PgUserStore'
+import PgEntrySaver from '../db/PgEntrySaver'
+import PgDayStore from '../db/PgDayStore'
 
 class DIC {
 
@@ -32,10 +36,10 @@ class DIC {
 
     private initInterfaces() {
         this.container.bind<Webserver>(TYPES.Webserver).to(KoaWebserver)
-        this.container.bind<UserSaver>(TYPES.UserSaver).to(PgRepository)
-        this.container.bind<UserStore>(TYPES.UserStore).to(PgRepository)
-        this.container.bind<EntrySaver>(TYPES.EntrySaver).to(PgRepository)
-        this.container.bind<DayStore>(TYPES.DayStore).to(PgRepository)
+        this.container.bind<UserSaver>(TYPES.UserSaver).to(PgUserSaver)
+        this.container.bind<UserStore>(TYPES.UserStore).to(PgUserStore)
+        this.container.bind<EntrySaver>(TYPES.EntrySaver).to(PgEntrySaver)
+        this.container.bind<DayStore>(TYPES.DayStore).to(PgDayStore)
         this.container.bind<UuidGenerator>(TYPES.UuidGenerator).to(V4UuidGenerator)
     }
 
