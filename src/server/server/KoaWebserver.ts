@@ -61,11 +61,13 @@ export default class KoaWebserver implements Webserver {
         })
     }
 
-    public run(portNumber: number): void {
+    public assemble(): void {
         this.koa.use(json())
             .use(this.router.routes())
             .use(this.router.allowedMethods())
+    }
 
+    public run(portNumber: number): void {
         this.koa.listen(portNumber)
         console.info(`Started webserver: http://localhost:${portNumber}`)
     }

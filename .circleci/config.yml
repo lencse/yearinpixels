@@ -8,11 +8,20 @@ jobs:
         docker:
             # specify the version you desire here
             - image: circleci/node:10.15
+                environment:
+                    PORT: 5600
+                    DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+
 
             # Specify service dependencies here if necessary
             # CircleCI maintains a library of pre-built images
             # documented at https://circleci.com/docs/2.0/circleci-images/
-            # - image: circleci/myongo:3.4.4
+
+            - image: circleci/postgres:11-alpine
+                environment:
+                    POSTGRES_USER: postgres
+                    POSTGRES_PASSWORD: postgres
+                    POSTGRES_DB: postgres
 
         working_directory: ~/repo
 
@@ -34,6 +43,8 @@ jobs:
                 key: v1-dependencies-{{ checksum "yarn.lock" }}
 
             - run: yarn build
+
+            - run: yarn migrate
 
             - run: yarn test-all
 

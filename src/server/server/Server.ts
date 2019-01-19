@@ -19,12 +19,19 @@ export default class Server {
         @inject(GetDays) private getDays: GetDays
     ) {}
 
-    public run(): void {
+    public init(): Server {
         this.webserver.staticDir('./public')
         this.webserver.createUser(this.createUser)
         this.webserver.getUser(this.getUser)
         this.webserver.createCalendarEntry(this.createEntry)
         this.webserver.getDays(this.getDays)
+
+        this.webserver.assemble()
+
+        return this
+    }
+
+    public run(): void {
         this.webserver.run(this.portNumber)
     }
 

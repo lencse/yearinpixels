@@ -33,6 +33,7 @@
     "@types/pg": "^7.4.11",
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
+    "@types/supertest": "^2.0.7",
     "@types/uuid": "^3.4.4",
     "clean-webpack-plugin": "^1.0.0",
     "command-line-args": "^5.0.2",
@@ -49,6 +50,7 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "sass-loader": "^7.1.0",
+    "supertest": "^3.4.1",
     "terser-webpack-plugin": "^1.2.1",
     "ts-jest": "^23.10.5",
     "tslint": "^5.12.0",
@@ -75,9 +77,10 @@
     "watch-webpack": "webpack --watch",
     "watch": "yarn clean-build && yarn build-typescript && yarn build-views-dev && (yarn watch-typescript & yarn watch-server & yarn watch-views & yarn watch-webpack)",
     "lint": "tslint -c tslint.json -p .",
-    "test-all": "yarn lint && yarn test",
+    "test-all": "yarn lint && yarn test-build && yarn test",
     "postinstall": "./deploy.sh",
     "test": "jest --verbose --coverage",
-    "watch-test": "jest --watch"
+    "test-build": "jest --config jest.config.build.js --verbose",
+    "watch-test": "jest --config jest.config.dev.js --watch"
   }
 }

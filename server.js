@@ -1,1 +1,1 @@
-require('./build/src/server/server').server().run()
+require('./build/src/server/server').server().init().run()

@@ -15,6 +15,8 @@ export default interface Webserver {
 
     getDays(handler: GetDays): void
 
+    assemble(): void,
+
     run(portNumber: number): void
 
 }
