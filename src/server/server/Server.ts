@@ -4,6 +4,7 @@ import { TYPES, SCALARS } from '../dic/params'
 import 'reflect-metadata'
 import CreateUser from '../auth/CreateUser'
 import GetUser from '../auth/GetUser'
+import CreateEntry from '../calendar/CreateEntry'
 
 @injectable()
 export default class Server {
@@ -12,13 +13,15 @@ export default class Server {
         @inject(SCALARS.Webserver.PortNumber) private portNumber: number,
         @inject(TYPES.Webserver) private webserver: Webserver,
         @inject(CreateUser) private createUser: CreateUser,
-        @inject(GetUser) private getUser: GetUser
+        @inject(GetUser) private getUser: GetUser,
+        @inject(CreateEntry) private createEntry: CreateEntry
     ) {}
 
     public run(): void {
         this.webserver.staticDir('./public')
         this.webserver.createUser(this.createUser)
         this.webserver.getUser(this.getUser)
+        this.webserver.createCalendarEntry(this.createEntry)
         this.webserver.run(this.portNumber)
     }
 

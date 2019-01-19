@@ -4,11 +4,11 @@ import * as json from 'koa-json'
 import * as serve from 'koa-static'
 import 'reflect-metadata'
 import { injectable } from 'inversify'
-import { SCALARS } from '../dic/params'
 import Webserver from './Webserver'
 import CreateUser from '../auth/CreateUser'
-import { userSerializer } from '../json-api/serializers'
 import GetUser from '../auth/GetUser'
+import CreateEntry from '../calendar/CreateEntry'
+import * as koaBody from 'koa-body'
 
 @injectable()
 export default class KoaWebserver implements Webserver {
@@ -27,16 +27,29 @@ export default class KoaWebserver implements Webserver {
     }
 
     public createUser(handler: CreateUser): void {
-        this.router.post('/api/users', async (ctx: Koa.Context, next) => {
+        this.router.post('/api/user', async (ctx: Koa.Context, next) => {
             const user = await handler.handle()
-            ctx.body = userSerializer.serialize(user)
+            ctx.body = user
+        })
+    }
+
+    public createCalendarEntry(handler: CreateEntry): void {
+        this.router.post('/api/calendar-entry', koaBody({multipart: true}), async (ctx: Koa.Context, next) => {
+            const entry = await handler.handle({
+                userId: ctx.request.body.userId,
+                comment: ctx.request.body.comment,
+                mood: Number(ctx.request.body.mood),
+                date: new Date(ctx.request.body.date),
+                timestamp: Number(ctx.request.body.timestamp)
+            })
+            ctx.body = entry
         })
     }
 
     public getUser(handler: GetUser): void {
-        this.router.get('/api/users/:id', async (ctx: Koa.Context, next) => {
+        this.router.get('/api/user/:id', async (ctx: Koa.Context, next) => {
             const user = await handler.handle({id: ctx.params.id})
-            ctx.body = userSerializer.serialize(user)
+            ctx.body = user
         })
     }
 
