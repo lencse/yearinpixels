@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button'
 import DataProvider from '../state/DataProvider'
 import ApplicationState from '../state/ApplicationState'
 import Subscriber from '../state/Subscriber'
+import { range } from 'lodash'
 
 interface MainProps {
 
@@ -18,11 +19,38 @@ export default class Main extends React.Component<MainProps, ApplicationState> i
     }
 
     public render(): React.ReactNode {
+        const row = (() => range(0, 12).map((idx) => (
+            <td key={ idx }>
+            </td>
+        )))
+        const rows = range(1, 32).map((idx) => (
+            <tr key={ idx }>
+                <th>{ idx }.</th>
+                { row() }
+            </tr>
+        ))
         return (
             <div>
-                <Button variant='contained' color='primary'>
-                    { this.state.name }
-                </Button>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th></th>
+                            <th>J</th>
+                            <th>F</th>
+                            <th>M</th>
+                            <th>A</th>
+                            <th>M</th>
+                            <th>J</th>
+                            <th>J</th>
+                            <th>A</th>
+                            <th>S</th>
+                            <th>O</th>
+                            <th>N</th>
+                            <th>D</th>
+                        </tr>
+                        { rows }
+                    </tbody>
+                </table>
             </div>
         )
     }
@@ -35,4 +63,9 @@ export default class Main extends React.Component<MainProps, ApplicationState> i
         this.setState(state)
     }
 
+    private row() {
+        return range(0, 12).map(() => (
+            <td></td>
+        ))
+    }
 }

@@ -1,8 +1,8 @@
 import { injectable } from 'inversify'
 import 'reflect-metadata'
-import DataProvider from '../../state/DataProvider'
-import ApplicationState from '../../state/ApplicationState'
-import Subscriber from '../../state/Subscriber'
+import DataProvider from '../state/DataProvider'
+import ApplicationState from '../state/ApplicationState'
+import Subscriber from '../state/Subscriber'
 
 @injectable()
 export default class Application implements DataProvider {
