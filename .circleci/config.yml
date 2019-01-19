@@ -8,9 +8,9 @@ jobs:
         docker:
             # specify the version you desire here
             - image: circleci/node:10.15
-                environment:
-                    PORT: 5600
-                    DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+                - environment:
+                    - PORT: 5600
+                    - DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
 
 
             # Specify service dependencies here if necessary
@@ -19,9 +19,9 @@ jobs:
 
             - image: circleci/postgres:11-alpine
                 environment:
-                    POSTGRES_USER: postgres
-                    POSTGRES_PASSWORD: postgres
-                    POSTGRES_DB: postgres
+                    - POSTGRES_USER: postgres
+                    - POSTGRES_PASSWORD: postgres
+                    - POSTGRES_DB: postgres
 
         working_directory: ~/repo
 
