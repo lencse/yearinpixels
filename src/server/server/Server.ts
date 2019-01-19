@@ -35,4 +35,8 @@ export default class Server {
         this.webserver.run(this.portNumber)
     }
 
+    public get app(): any {
+        return this.webserver.app
+    }
+
 }

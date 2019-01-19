@@ -5,6 +5,8 @@ import GetDays from '../calendar/GetDays'
 
 export default interface Webserver {
 
+    app: any
+
     staticDir(dir: string): void
 
     createUser(handler: CreateUser): void

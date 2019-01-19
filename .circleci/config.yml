@@ -6,16 +6,10 @@ version: 2
 jobs:
     build:
         docker:
-            # specify the version you desire here
             - image: circleci/node:10.15
               environment:
                 PORT: 5600
                 DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
-
-
-            # Specify service dependencies here if necessary
-            # CircleCI maintains a library of pre-built images
-            # documented at https://circleci.com/docs/2.0/circleci-images/
 
             - image: circleci/postgres:11-alpine
               environment:

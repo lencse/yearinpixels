@@ -1,12 +1,10 @@
 import dic from '../../../src/server/dic/dic'
-import * as Koa from 'koa'
 import * as supertest from 'supertest'
 
 describe('ServerTest', () => {
     it('Server is working fine', async () => {
-        const server: any = dic.server.init()
-        const koa: Koa = server.webserver.koa
-        const testServer = supertest(koa.callback())
+        const server = dic.server.init()
+        const testServer = supertest(server.app.callback())
 
         const user1 = (await testServer.post('/api/user')).body.id
         const user2 = (await testServer.post('/api/user')).body.id

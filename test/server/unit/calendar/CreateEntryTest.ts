@@ -1,7 +1,3 @@
-import CreateUser from '../../../../src/server/auth/CreateUser'
-import UserData from '../../../../src/server/auth/UserData'
-import UserSavingData from '../../../../src/server/auth/UserSavingData'
-import UserFactory from '../../../../src/server/auth/UserFactory'
 import CreateEntry from '../../../../src/server/calendar/CreateEntry'
 import EntrySavingData from '../../../../src/server/calendar/EntrySavingData'
 import EntryData from '../../../../src/server/calendar/EntryData'

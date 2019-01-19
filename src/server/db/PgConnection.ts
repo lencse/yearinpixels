@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify'
 import 'reflect-metadata'
 import { SCALARS } from '../dic/params'
-import { Pool, QueryResult } from 'pg'
+import { Pool } from 'pg'
 
 @injectable()
 export default class PgConnection {

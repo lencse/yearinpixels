@@ -72,4 +72,8 @@ export default class KoaWebserver implements Webserver {
         console.info(`Started webserver: http://localhost:${portNumber}`)
     }
 
+    public get app(): any {
+        return this.koa
+    }
+
 }
