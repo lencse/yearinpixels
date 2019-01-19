@@ -9,10 +9,17 @@ import UserFactory from './UserFactory'
 @injectable()
 export default class CreateUser {
 
+    public static construct(
+        saver: UserSaver,
+        uuidGenerator: UuidGenerator
+    ): CreateUser {
+        return new CreateUser(saver, uuidGenerator, new UserFactory())
+    }
+
     constructor(
-        @inject(TYPES.UserSaver) private saver: UserSaver,
-        @inject(TYPES.UuidGenerator) private uuidGenerator: UuidGenerator,
-        @inject(UserFactory) private userFactory: UserFactory
+        private saver: UserSaver,
+        private uuidGenerator: UuidGenerator,
+        private userFactory: UserFactory
     ) {}
 
     public async handle(): Promise<User> {

@@ -41,7 +41,12 @@ class DIC {
 
     private initClasses() {
         this.container.bind<Server>(Server).to(Server)
-        this.container.bind<CreateUser>(CreateUser).to(CreateUser)
+        this.container.bind<CreateUser>(CreateUser).toDynamicValue((ctx) => {
+            return CreateUser.construct(
+                ctx.container.get<UserSaver>(TYPES.UserSaver),
+                ctx.container.get<UuidGenerator>(TYPES.UuidGenerator)
+            )
+        })
         this.container.bind<CreateEntry>(CreateEntry).to(CreateEntry)
         this.container.bind<GetUser>(GetUser).to(GetUser)
         this.container.bind<EntryFactory>(EntryFactory).to(EntryFactory)

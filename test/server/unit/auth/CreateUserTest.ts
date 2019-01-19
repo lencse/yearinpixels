@@ -12,14 +12,13 @@ describe('CreateUser', () => {
                 return data
             }
         }
-        const handler = new CreateUser(
+        const handler = CreateUser.construct(
             saver,
             {
                 generate(): string {
                     return 'x'
                 }
-            },
-            new UserFactory()
+            }
         )
 
         const result = await handler.handle()
