@@ -6,8 +6,5 @@ module.exports = {
         '**/test/**/*Integration*.ts?(x)'
     ],
     coverageDirectory: 'logs/jest',
-    collectCoverage: true,
-    collectCoverageFrom: [
-        'src/**/*.ts?(x)'
-    ]
+    collectCoverage: true
 }
