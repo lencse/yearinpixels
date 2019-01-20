@@ -93,7 +93,7 @@ jobs:
                         -Dsonar.sources=src \
                         -Dsonar.host.url=$SONARCLOUD_URL \
                         -Dsonar.login=$SONARCLOUD_LOGIN \
-                        -Dsonar.exclusions=logs/**,node_modules/**,build/**
+                        -Dsonar.exclusions=logs/**,node_modules/**,build/** \
                         -Dsonar.testExecutionReportPaths=logs/jest/test-reporter.xml
             # - run:
             #      name: Run codecov
