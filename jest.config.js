@@ -5,5 +5,13 @@ module.exports = {
         '**/test/**/*Test.ts?(x)',
         '**/test/**/*Integration*.ts?(x)'
     ],
-    coverageDirectory: 'logs/jest'
+    coverageDirectory: 'logs/jest',
+    collectCoverage: true,
+    collectCoverageFrom: [
+        'src/**/*.ts?(x)'
+    ],
+    reporters: [
+        'default',
+        'jest-junit'
+    ]
 }
