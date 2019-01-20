@@ -1,5 +1,6 @@
 # Year in pixels
 
+[![CircleCI](https://circleci.com/gh/lencse/yearinpixels.svg?style=svg)](https://circleci.com/gh/lencse/yearinpixels)
 [![codecov](https://codecov.io/gh/lencse/yearinpixels/branch/master/graph/badge.svg)](https://codecov.io/gh/lencse/yearinpixels)
 [![StyleCI](https://github.styleci.io/repos/164930797/shield?branch=master)](https://github.styleci.io/repos/164930797)
 
