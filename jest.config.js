@@ -9,9 +9,5 @@ module.exports = {
     collectCoverage: true,
     collectCoverageFrom: [
         'src/**/*.ts?(x)'
-    ],
-    reporters: [
-        'default',
-        'jest-junit'
     ]
 }
