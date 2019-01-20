@@ -94,7 +94,8 @@ jobs:
                         -Dsonar.host.url=$SONARCLOUD_URL \
                         -Dsonar.login=$SONARCLOUD_LOGIN \
                         -Dsonar.exclusions=logs/**,node_modules/**,build/** \
-                        -Dsonar.testExecutionReportPaths=logs/jest/test-reporter.xml
+                        -Dsonar.testExecutionReportPaths=logs/jest/test-reporter.xml \
+                        -Dsonar.typescript.lcov.reportPaths=logs/jest/lcov.info
             # - run:
             #      name: Run codecov
             #      command: bash <(curl -s https://codecov.io/bash)
