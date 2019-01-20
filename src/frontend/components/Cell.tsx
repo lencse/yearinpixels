@@ -13,15 +13,7 @@ export default class Cell extends React.Component<{ data: TableData, day: number
         ]
 
         if (realDay) {
-            this.props.data.days.filter((calendarDay) => {
-                const d = calendarDay.date
-                return d.getFullYear() === date.getFullYear()
-                    && d.getMonth() === date.getMonth()
-                    && d.getDate() === date.getDate()
-            }).filter((item, idx) => 0 === idx)
-            .forEach((current) => {
-                classes.push(`cell--mood-${current.mood}`)
-            })
+            classes.push(`cell--mood-${this.props.data.days.get(date).mood}`)
         }
 
         return (

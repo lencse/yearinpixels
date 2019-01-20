@@ -1,13 +1,13 @@
 import * as dateformat from 'dateformat'
 import User from '../auth/User'
 import NullUser from '../auth/NullUser'
-import Day from '../calendar/Day'
+import DayStore from '../calendar/DayStore'
 
 export default interface ApplicationState {
 
     user: User
 
-    days: Day[]
+    days: DayStore,
 
     currentDate: Date
 
@@ -16,7 +16,7 @@ export default interface ApplicationState {
 export function initial(): ApplicationState {
     return {
         user: new NullUser(),
-        days: [
+        days: new DayStore([
             {
                 id: 'A',
                 date: new Date('2019-01-01'),
@@ -47,7 +47,7 @@ export function initial(): ApplicationState {
                 mood: 6,
                 comment: ''
             }
-        ],
+        ]),
         currentDate: new Date(dateformat(new Date(), 'yyyy-mm-dd'))
     }
 }

@@ -1,9 +1,8 @@
-import User from '../auth/User'
-import Day from '../calendar/Day'
+import DayStore from '../calendar/DayStore'
 
 export default interface TableData {
 
-    days: Day[]
+    days: DayStore
 
     currentDate: Date
 
