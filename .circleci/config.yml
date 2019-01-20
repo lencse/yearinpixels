@@ -56,11 +56,12 @@ jobs:
                     # fallback to using the latest cache if no exact match is found
                     - v1-dependencies-
 
-            - run: yarn
-
             - run:
                 name: Set up Sonarcloud client
                 command: .circleci/setup-sonarcloud.sh
+
+            - run: yarn
+
             - run:
                 name: Add sonar dir to PATH
                 command:
