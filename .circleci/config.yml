@@ -68,9 +68,6 @@ jobs:
             - run:
                 name: Set up Sonarcloud client
                 command: .circleci/setup-sonarcloud.sh
-
-            - run: yarn
-
             - run:
                 name: Add sonar dir to PATH
                 command:
@@ -79,6 +76,13 @@ jobs:
                 name: Check Sonarcloud setup
                 command:
                     sonar-scanner --version
+
+            - run: yarn
+
+            - run: yarn build
+
+            - run: yarn migrate
+
             - run:
                  name: Test coverage
                  command: yarn test
