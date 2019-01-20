@@ -6,5 +6,6 @@ module.exports = {
         '**/test/**/*Integration*.ts?(x)'
     ],
     coverageDirectory: 'logs/jest',
-    collectCoverage: true
+    collectCoverage: true,
+    testResultsProcessor: 'jest-sonar-reporter'
 }

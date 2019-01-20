@@ -42,6 +42,7 @@
     "handlebars": "^4.0.12",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.6.0",
+    "jest-sonar-reporter": "^2.0.0",
     "lodash": "^4.17.11",
     "mini-css-extract-plugin": "^0.5.0",
     "mkdirp": "^0.5.1",
@@ -83,5 +84,10 @@
     "test": "jest --verbose",
     "test-build": "jest --config jest.config.build.js --verbose",
     "watch-test": "jest --config jest.config.dev.js --watch"
+  },
+  "jestSonar": {
+    "reportPath": "logs/jest",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
   }
 }
