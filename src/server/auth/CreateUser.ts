@@ -1,7 +1,6 @@
 import User from './User'
 import 'reflect-metadata'
-import { inject, injectable } from 'inversify'
-import { TYPES } from '../dic/params'
+import { injectable } from 'inversify'
 import UserSaver from './UserSaver'
 import UuidGenerator from '../uuid/UuidGenerator'
 import UserFactory from './UserFactory'

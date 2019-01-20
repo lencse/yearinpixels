@@ -6,4 +6,34 @@ td {
     border: 1px solid #666;
     height: 1.4em;
     width: 1.4em;
+    padding: 0;
 }
+
+td.cell--mood-1 {
+    background: blue;
+}
+
+td.cell--mood-2 {
+    background: green;
+}
+
+td.cell--mood-3 {
+    background: yellow;
+}
+
+td.cell--mood-4 {
+    background: grey;
+}
+
+td.cell--mood-5 {
+    background: red;
+}
+
+td.cell--mood-6 {
+    background: purple;
+}
+
+td.cell--mood-7 {
+    background: cyan;
+}
+

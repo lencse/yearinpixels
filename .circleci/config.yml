@@ -96,9 +96,6 @@ jobs:
                         -Dsonar.exclusions=logs/**,node_modules/**,build/** \
                         -Dsonar.testExecutionReportPaths=logs/jest/test-reporter.xml \
                         -Dsonar.typescript.lcov.reportPaths=logs/jest/lcov.info
-            - run:
-                 name: Run codecov
-                 command: bash <(curl -s https://codecov.io/bash)
 
     deploy-to-staging:
         docker:
