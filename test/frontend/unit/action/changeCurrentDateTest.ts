@@ -1,4 +1,4 @@
-import changeCurrentDate from '../../../../src/frontend/action/ChangeCurrentDate'
+import changeCurrentDate from '../../../../src/frontend/action/changeCurrentDate'
 import { initial } from '../../../../src/frontend/state/ApplicationState'
 
 describe('changeCurrentDate', () => {
