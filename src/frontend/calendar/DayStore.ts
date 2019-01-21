@@ -1,4 +1,5 @@
 import Day from './Day'
+import equal from '../dates/equal'
 
 export default class DayStore {
 
@@ -7,14 +8,9 @@ export default class DayStore {
     ) {}
 
     public get(date: Date): Day {
-        return this.days.filter((calendarDay) => {
-            const d = calendarDay.date
-            return d.getFullYear() === date.getFullYear()
-                && d.getMonth() === date.getMonth()
-                && d.getDate() === date.getDate()
-        })
-        .reduce((prev, curr) => curr || prev, {
-            id: '',
+        return this.days.filter(
+            (calendarDay) => equal(calendarDay.date, date)
+        ).reduce((prev, curr) => curr || prev, {
             comment: '',
             date,
             mood: 0

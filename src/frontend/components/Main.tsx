@@ -2,12 +2,14 @@ import * as React from 'react'
 import DataProvider from '../state/DataProvider'
 import ApplicationState from '../state/ApplicationState'
 import Subscriber from '../state/Subscriber'
-import { range } from 'lodash'
 import Table from './Table'
+import Reducer from '../action/Reducer'
 
 interface MainProps {
 
     dataProvider: DataProvider
+
+    reducer: Reducer
 
 }
 
@@ -21,7 +23,7 @@ export default class Main extends React.Component<MainProps, ApplicationState> i
     public render(): React.ReactNode {
         return (
             <div>
-                <Table data={{...this.state}} />
+                <Table data={{...this.state}} reducer={ this.props.reducer } />
             </div>
         )
     }
@@ -34,9 +36,4 @@ export default class Main extends React.Component<MainProps, ApplicationState> i
         this.setState(state)
     }
 
-    private row() {
-        return range(0, 12).map(() => (
-            <td></td>
-        ))
-    }
 }

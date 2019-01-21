@@ -7,6 +7,9 @@
   "author": "Levente Löki <leventeloki@gmail.com>",
   "license": "MIT",
   "private": false,
+  "engines": {
+    "node": "^10.15.0"
+  },
   "dependencies": {
     "db-migrate": "^0.11.5",
     "db-migrate-pg": "^0.4.0",
@@ -34,6 +37,7 @@
     "@types/pg": "^7.4.11",
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
+    "@types/react-test-renderer": "^16.0.3",
     "@types/supertest": "^2.0.7",
     "@types/uuid": "^3.4.4",
     "clean-webpack-plugin": "^1.0.0",
@@ -53,6 +57,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-test-renderer": "^16.7.0",
     "sass-loader": "^7.1.0",
     "supertest": "^3.4.1",
     "terser-webpack-plugin": "^1.2.1",

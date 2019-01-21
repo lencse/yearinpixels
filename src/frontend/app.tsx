@@ -6,7 +6,7 @@ import dic from './dic/dic'
 const app = dic.application
 
 ReactDom.render(
-    <Main dataProvider={ app } />,
+    <Main dataProvider={ app } reducer={ app } />,
     document.getElementById('react-root')
 )
 
