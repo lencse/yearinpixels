@@ -21,7 +21,7 @@ export default class Cell extends React.Component<{ data: TableData, day: number
         }
 
         return (
-            <td className={ classes.join(' ') } /*onClick={ this.click.bind(this) }*/ />
+            <td className={ classes.join(' ') } onClick={ this.click.bind(this) } />
         )
     }
 
