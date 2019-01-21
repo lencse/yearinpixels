@@ -1,20 +1,36 @@
+import * as dateformat from 'dateformat'
 import Day from './Day'
 import equal from '../dates/equal'
-
 export default class DayStore {
 
+    private _days: Map<string, Day> = new Map<string, Day>()
+
     constructor(
-        private days: Day[]
-    ) {}
+        days: Day[]
+    ) {
+        days.forEach((day) => {
+            this._days.set(dateformat(day.date, 'yyyymmdd'), day)
+        })
+    }
 
     public get(date: Date): Day {
-        return this.days.filter(
-            (calendarDay) => equal(calendarDay.date, date)
-        ).reduce((prev, curr) => curr || prev, {
-            comment: '',
-            date,
-            mood: 0
-        })
+        const key = dateformat(date, 'yyyymmdd')
+        return this._days.has(key) ?
+            this._days.get(key) :
+            {
+                comment: '',
+                date,
+                mood: 0
+            }
+    }
+
+    public put(day: Day): DayStore {
+        const data: Day[] = []
+        this._days.forEach((originalDay) =>
+            equal(originalDay.date, day.date) || data.push(originalDay)
+        )
+        data.push(day)
+        return new DayStore(data)
     }
 
 }

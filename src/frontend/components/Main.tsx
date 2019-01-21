@@ -4,6 +4,7 @@ import ApplicationState from '../state/ApplicationState'
 import Subscriber from '../state/Subscriber'
 import Table from './Table'
 import Reducer from '../action/Reducer'
+import Panel from './Panel'
 
 interface MainProps {
 
@@ -24,6 +25,7 @@ export default class Main extends React.Component<MainProps, ApplicationState> i
         return (
             <div>
                 <Table data={{...this.state}} reducer={ this.props.reducer } />
+                <Panel data={{...this.state}} reducer={ this.props.reducer } />
             </div>
         )
     }

@@ -1719,5 +1719,51 @@ exports[`Main Main component renders 1`] = `
       </tr>
     </tbody>
   </table>
+  <div>
+    <ul>
+      <li>
+        <span
+          className="cell cell--mood-1"
+          onClick={[Function]}
+        />
+      </li>
+      <li>
+        <span
+          className="cell cell--mood-2"
+          onClick={[Function]}
+        />
+      </li>
+      <li>
+        <span
+          className="cell cell--mood-3"
+          onClick={[Function]}
+        />
+      </li>
+      <li>
+        <span
+          className="cell cell--mood-4"
+          onClick={[Function]}
+        />
+      </li>
+      <li>
+        <span
+          className="cell cell--mood-5"
+          onClick={[Function]}
+        />
+      </li>
+      <li>
+        <span
+          className="cell cell--mood-6"
+          onClick={[Function]}
+        />
+      </li>
+      <li>
+        <span
+          className="cell cell--mood-7"
+          onClick={[Function]}
+        />
+      </li>
+    </ul>
+  </div>
 </div>
 `;
