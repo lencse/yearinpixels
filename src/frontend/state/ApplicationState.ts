@@ -13,36 +13,10 @@ export default interface ApplicationState {
 
 }
 
-export function initial(): ApplicationState {
+export function initial(currentDate?: Date): ApplicationState {
     return {
         user: new NullUser(),
-        days: new DayStore([
-            {
-                date: new Date('2019-01-01'),
-                mood: 1,
-                comment: ''
-            },
-            {
-                date: new Date('2019-01-02'),
-                mood: 1,
-                comment: ''
-            },
-            {
-                date: new Date('2019-01-03'),
-                mood: 2,
-                comment: ''
-            },
-            {
-                date: new Date('2019-01-04'),
-                mood: 5,
-                comment: ''
-            },
-            {
-                date: new Date('2019-03-15'),
-                mood: 6,
-                comment: ''
-            }
-        ]),
-        currentDate: new Date(dateformat(new Date(), 'yyyy-mm-dd'))
+        days: new DayStore([]),
+        currentDate: currentDate || new Date(dateformat(new Date(), 'yyyy-mm-dd'))
     }
 }

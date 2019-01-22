@@ -15,7 +15,7 @@ describe('Main', () => {
         }
         const dataProvider: DataProvider = {
             addSubscriber(subscriber: Subscriber) {
-                subscriber.init(initial())
+                subscriber.init(initial(new Date('2019-01-01')))
             }
         }
         const main = renderer.create(
