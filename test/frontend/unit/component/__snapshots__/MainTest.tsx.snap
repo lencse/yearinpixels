@@ -1129,7 +1129,7 @@ exports[`Main Main component renders: main1 1`] = `
           .
         </th>
         <td
-          className="cell--real cell--mood-0 cell--current"
+          className="cell--real cell--mood-0"
           onClick={[Function]}
         />
         <td
@@ -1183,7 +1183,7 @@ exports[`Main Main component renders: main1 1`] = `
           .
         </th>
         <td
-          className="cell--real cell--mood-0"
+          className="cell--real cell--mood-0 cell--current"
           onClick={[Function]}
         />
         <td
