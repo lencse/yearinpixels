@@ -8,8 +8,6 @@ echo "Build on Heroku"
 export DEPLOY_STARTED="true"
 rm -rf test
 yarn build
-# export DATABASE_CONNECTION_URL=$DATABASE_URL
-# unset DATABASE_URL
 yarn add --dev pg-native
 db-migrate --config db-config.js --env prod up
 
