@@ -1,6 +1,5 @@
-import changeCurrentDate from '../../../../src/frontend/action/changeCurrentDate'
 import { initial } from '../../../../src/frontend/state/ApplicationState'
-import changeMood from '../../../../src/frontend/action/changeMood';
+import changeMood from '../../../../src/frontend/action/changeMood'
 
 describe('changeMood', () => {
     it('State is changed', () => {
