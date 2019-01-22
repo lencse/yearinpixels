@@ -21,6 +21,6 @@ describe('Main', () => {
         const main = renderer.create(
             <Main reducer={ reducer } dataProvider={ dataProvider} />
         ).toJSON()
-        expect(main).toMatchSnapshot()
+        expect(main).toMatchSnapshot('main1')
     })
 })
