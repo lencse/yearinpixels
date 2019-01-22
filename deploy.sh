@@ -10,7 +10,7 @@ rm -rf test
 yarn build
 # export DATABASE_CONNECTION_URL=$DATABASE_URL
 # unset DATABASE_URL
-# yarn add --dev pg-native
+yarn add --dev pg-native
 db-migrate --config db-config.js --env prod up
 
 rm -rf build/src/frontend
