@@ -34,10 +34,19 @@ describe('DayStore', () => {
             date: new Date('2019-01-01'),
             mood: 1,
             comment: ''
+        }).put({
+            date: new Date('2019-01-02'),
+            mood: 2,
+            comment: ''
         })
         expect(store.get(new Date('2019-01-01'))).toEqual({
             date: new Date('2019-01-01'),
             mood: 1,
+            comment: ''
+        })
+        expect(store.get(new Date('2019-01-02'))).toEqual({
+            date: new Date('2019-01-02'),
+            mood: 2,
             comment: ''
         })
     })
