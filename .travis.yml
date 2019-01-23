@@ -12,5 +12,5 @@ install:
     - export PORT=6400
     - yarn
     - yarn migrate
-    - yarn test
-    - cp logs/jest/lcov.info ./
+    - yarn test --detectOpenHandles
+    - cat logs/jest/lcov.info | coveralls
