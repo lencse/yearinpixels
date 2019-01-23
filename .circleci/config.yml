@@ -96,6 +96,7 @@ jobs:
                         -Dsonar.exclusions=logs/**,node_modules/**,build/** \
                         -Dsonar.testExecutionReportPaths=logs/jest/test-reporter.xml \
                         -Dsonar.typescript.lcov.reportPaths=logs/jest/lcov.info
+            - run: cat logs/jest/lcov.info | coveralls
 
     deploy-to-staging:
         docker:

@@ -13,4 +13,4 @@ install:
     - yarn
     - yarn migrate
     - yarn test --detectOpenHandles
-    - cat logs/jest/lcov.info | coveralls
+    # - cat logs/jest/lcov.info | coveralls
