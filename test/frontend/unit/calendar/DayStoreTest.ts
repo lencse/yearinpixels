@@ -29,4 +29,16 @@ describe('DayStore', () => {
             comment: 'Comment'
         })
     })
+    it('Day can be retrieved after put', () => {
+        const store = new DayStore([]).put({
+            date: new Date('2019-01-01'),
+            mood: 1,
+            comment: ''
+        })
+        expect(store.get(new Date('2019-01-01'))).toEqual({
+            date: new Date('2019-01-01'),
+            mood: 1,
+            comment: ''
+        })
+    })
 })

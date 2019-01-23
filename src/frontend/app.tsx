@@ -2,12 +2,18 @@ import * as React from 'react'
 import * as ReactDom from 'react-dom'
 import Main from './components/Main'
 import dic from './dic/dic'
+import { initial } from './state/ApplicationState'
+import Application from './application/Application'
 
-const app = dic.application
+const application = dic.application
 
-ReactDom.render(
-    <Main dataProvider={ app } reducer={ app } />,
-    document.getElementById('react-root')
-)
+application.init(initial())
 
-app.run()
+application.run({
+    attach(app: Application) {
+        ReactDom.render(
+            <Main dataProvider={ app } actionHandler={ app } />,
+            document.getElementById('react-root')
+        )
+    }
+})

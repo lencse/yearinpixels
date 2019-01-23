@@ -1,9 +1,13 @@
 import * as React from 'react'
 import TableData from '../props/TableData'
-import Reducer from '../action/Reducer'
+import ActionHandler from '../action/ActionHandler'
 import changeMood from '../action/changeMood'
 
-export default class PanelCell extends React.Component<{ data: TableData, mood: number, reducer: Reducer }> {
+export default class PanelCell extends React.Component<{
+    data: TableData,
+    mood: number,
+    actionHandler: ActionHandler
+ }> {
 
     public render(): React.ReactNode {
         return (
@@ -12,7 +16,7 @@ export default class PanelCell extends React.Component<{ data: TableData, mood: 
     }
 
     private click(): void {
-        this.props.reducer.apply(changeMood(this.props.mood))
+        this.props.actionHandler.handle(changeMood(this.props.mood))
     }
 
 }

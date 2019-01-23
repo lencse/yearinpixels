@@ -1,10 +1,15 @@
 import * as React from 'react'
 import TableData from '../props/TableData'
 import equal from '../dates/equal'
-import Reducer from '../action/Reducer'
+import ActionHandler from '../action/ActionHandler'
 import changeCurrentDate from '../action/changeCurrentDate'
 
-export default class Cell extends React.Component<{ data: TableData, day: number, month: number, reducer: Reducer }> {
+export default class Cell extends React.Component<{
+    data: TableData,
+    day: number,
+    month: number,
+    actionHandler: ActionHandler
+}> {
 
     public render(): React.ReactNode {
         const classes: string[] = [
@@ -28,7 +33,7 @@ export default class Cell extends React.Component<{ data: TableData, day: number
         if (!this.isReal) {
             return
         }
-        this.props.reducer.apply(changeCurrentDate(this.date))
+        this.props.actionHandler.handle(changeCurrentDate(this.date))
     }
 
     private get date(): Date {

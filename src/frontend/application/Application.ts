@@ -4,17 +4,22 @@ import DataProvider from '../state/DataProvider'
 import ApplicationState, { initial } from '../state/ApplicationState'
 import Subscriber from '../state/Subscriber'
 import Action from '../action/Action'
-import Reducer from '../action/Reducer'
+import ActionHandler from '../action/ActionHandler'
+import Ui from '../ui/Ui'
 
 @injectable()
-export default class Application implements DataProvider, Reducer {
+export default class Application implements DataProvider, ActionHandler {
+
+    private state: ApplicationState
 
     private subscribers: Subscriber[] = []
 
-    private state: ApplicationState = initial()
+    public init(state: ApplicationState) {
+        this.state = state
+    }
 
-    public run(): void {
-        console.info('Application started')
+    public run(ui: Ui): void {
+        ui.attach(this)
     }
 
     public addSubscriber(subscriber: Subscriber): void {
@@ -22,7 +27,7 @@ export default class Application implements DataProvider, Reducer {
         subscriber.init(this.state)
     }
 
-    public apply(action: Action): void {
+    public handle(action: Action): void {
         this.state = action.transform(this.state)
         this.subscribers.forEach((subscriber) => {
             subscriber.update(this.state)
