@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+    - 10
+services:
+    - postgresql
+env:
+    - PORT=6400
+    - DATABASE_URL=postgres://postgres:@localhost:5432/testdb
+
+cache: npm
+
+before_script:
+    - psql -c 'create database testdb;' -U postgres
+
+install:
+    - yarn migrate
+    - yarn test
+    - cp logs/jest/lcov.info ./
