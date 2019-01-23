@@ -90,7 +90,7 @@
     "test-all": "yarn lint && yarn test-build && yarn test",
     "postinstall": "./deploy.sh",
     "test": "jest --verbose",
-    "test-build": "rm -rf build/test/frontend/unit/component/__snapshots__ && cp -r test/frontend/unit/component/__snapshots__ build/test/frontend/unit/component/ && rename s/tsx/js/ build/test/frontend/unit/component/__snapshots__/*.snap && jest --config jest.config.build.js --verbose",
+    "test-build": "rm -rf build/test/frontend/integration/__snapshots__ && cp -r test/frontend/integration/__snapshots__ build/test/frontend/integration/ && rename s/tsx/js/ build/test/frontend/integration/__snapshots__/*.snap && jest --config jest.config.build.js --verbose",
     "watch-test": "jest --config jest.config.dev.js --watch"
   },
   "jestSonar": {
