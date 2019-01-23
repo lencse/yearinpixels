@@ -6,10 +6,8 @@ services:
 
 cache: npm
 
-before_script:
-    - psql -c 'create database testdb;' -U postgres
-
 install:
+    - psql -c 'create database testdb;' -U postgres
     - export DATABASE_URL=postgres://postgres:@localhost:5432/testdb
     - export PORT=6400
     - yarn
