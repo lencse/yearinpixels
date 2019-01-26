@@ -1,6 +1,7 @@
 import { Container } from 'inversify'
 import { TYPES, SCALARS } from './params'
 import Store from '../store/Store'
+import App from '../app/App'
 
 class DIC {
 
@@ -17,13 +18,14 @@ class DIC {
 
     private initClasses() {
         this.container.bind<Store>(Store).to(Store)
+        this.container.bind<App>(App).to(App)
     }
 
     private initScalars(): void {
     }
 
-    public get application(): Store {
-        return this.container.get<Store>(Store)
+    public get app(): App {
+        return this.container.get<App>(App)
     }
 
 }

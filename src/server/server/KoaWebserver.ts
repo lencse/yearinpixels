@@ -8,8 +8,8 @@ import Webserver from './Webserver'
 import CreateUser from '../auth/CreateUser'
 import GetUser from '../auth/GetUser'
 import CreateEntry from '../calendar/CreateEntry'
-import * as koaBody from 'koa-body'
 import GetDays from '../calendar/GetDays'
+import * as bodyParser from 'koa-bodyparser'
 
 @injectable()
 export default class KoaWebserver implements Webserver {
@@ -35,7 +35,7 @@ export default class KoaWebserver implements Webserver {
     }
 
     public createCalendarEntry(handler: CreateEntry): void {
-        this.router.post('/api/calendar-entry', koaBody({multipart: true}), async (ctx: Koa.Context, next) => {
+        this.router.post('/api/calendar-entry', bodyParser(), async (ctx: Koa.Context, next) => {
             const entry = await handler.handle({
                 userId: ctx.request.body.userId,
                 comment: ctx.request.body.comment,

@@ -5,14 +5,10 @@ import dic from './dic/dic'
 import { initial } from './state/ApplicationState'
 import Store from './store/Store'
 
-const application = dic.application
-
-application.init(initial())
-
-application.run({
-    attach(app: Store) {
+dic.app.run(initial(), {
+    attach(store: Store) {
         ReactDom.render(
-            <Main dataProvider={ app } actionHandler={ app } />,
+            <Main dataProvider={ store } actionHandler={ store } />,
             document.getElementById('react-root')
         )
     }
