@@ -16,7 +16,7 @@ interface MainProps {
 
 export default class Main extends React.Component<MainProps, ApplicationState> implements Subscriber {
 
-    constructor(props: MainProps, context) {
+    constructor(props: MainProps, context: React.Context<ApplicationState>) {
         super(props, context)
         props.dataProvider.addSubscriber(this)
     }

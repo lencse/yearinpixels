@@ -8,7 +8,7 @@ import ActionHandler from '../action/ActionHandler'
 import Ui from '../ui/Ui'
 
 @injectable()
-export default class Application implements DataProvider, ActionHandler {
+export default class Store implements DataProvider, ActionHandler {
 
     private state: ApplicationState
 

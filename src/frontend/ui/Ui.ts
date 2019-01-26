@@ -1,7 +1,7 @@
-import Application from '../application/Application'
+import Store from '../store/Store'
 
 export default interface Ui {
 
-    attach(app: Application): void
+    attach(store: Store): void
 
 }

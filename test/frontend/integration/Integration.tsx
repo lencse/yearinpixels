@@ -5,15 +5,15 @@ import { initial } from '../../../src/frontend/state/ApplicationState'
 import changeCurrentDate from '../../../src/frontend/action/changeCurrentDate'
 import dic from '../../../src/frontend/dic/dic'
 import changeMood from '../../../src/frontend/action/changeMood'
-import Application from '../../../src/frontend/application/Application'
+import Store from '../../../src/frontend/store/Store'
 import Ui from '../../../src/frontend/ui/Ui'
 
 class UiObserver implements Ui {
 
     public main
 
-    public attach(app: Application) {
-        this.main = <Main actionHandler={ app } dataProvider={ app} />
+    public attach(store: Store) {
+        this.main = <Main actionHandler={ store } dataProvider={ store} />
     }
 
 }

@@ -1,5 +1,5 @@
 import ApplicationState, { initial } from '../../../../src/frontend/state/ApplicationState'
-import Application from '../../../../src/frontend/application/Application'
+import Store from '../../../../src/frontend/store/Store'
 import Subscriber from '../../../../src/frontend/state/Subscriber'
 import equal from '../../../../src/frontend/dates/equal'
 import changeCurrentDate from '../../../../src/frontend/action/changeCurrentDate'
@@ -9,7 +9,7 @@ class Observer implements Subscriber, Ui {
 
     public state: ApplicationState
 
-    public app: Application
+    public store: Store
 
     public init(state: ApplicationState): void {
         this.state = state
@@ -19,25 +19,25 @@ class Observer implements Subscriber, Ui {
         this.state = state
     }
 
-    public attach(app: Application): void {
-        this.app = app
+    public attach(store: Store): void {
+        this.store = store
     }
 }
 
 describe('Application', () => {
     it('App handles the state changes', () => {
-        const app = new Application()
-        app.init(initial(new Date('2019-01-01')))
+        const store = new Store()
+        store.init(initial(new Date('2019-01-01')))
         const observer = new Observer()
-        app.addSubscriber(observer)
+        store.addSubscriber(observer)
         expect(equal(observer.state.currentDate, new Date('2019-01-01'))).toBeTruthy()
-        app.handle(changeCurrentDate(new Date('2019-01-02')))
+        store.handle(changeCurrentDate(new Date('2019-01-02')))
         expect(equal(observer.state.currentDate, new Date('2019-01-02'))).toBeTruthy()
     })
     it('App attaches to UI', () => {
-        const app = new Application()
+        const store = new Store()
         const observer = new Observer()
-        app.run(observer)
-        expect(observer.app).toBe(app)
+        store.run(observer)
+        expect(observer.store).toBe(store)
     })
 })
