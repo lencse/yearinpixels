@@ -10,7 +10,7 @@ rm -rf test
 yarn build
 yarn add --dev pg-native
 
-# yarn list
+yarn list
 # find .
 ls -la node_modules/.bin
 
