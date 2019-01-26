@@ -6,9 +6,9 @@ fi
 
 echo "Build on Heroku"
 export DEPLOY_STARTED="true"
+yarn add --dev pg-native
 rm -rf test
 yarn build
-yarn add --dev pg-native
 
 yarn list
 # find .
