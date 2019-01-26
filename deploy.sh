@@ -6,15 +6,9 @@ fi
 
 echo "Build on Heroku"
 export DEPLOY_STARTED="true"
-yarn add --dev pg-native
 rm -rf test
 yarn build
-
-yarn list
-# find .
-ls -la node_modules/.bin
-
-node_modules/.bin/db-migrate --config db-config.js --env prod up
+db-migrate --config db-config.js --env prod up
 
 rm -rf build/src/frontend
 rm -rf build/views
