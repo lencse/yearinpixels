@@ -9,7 +9,12 @@ export DEPLOY_STARTED="true"
 rm -rf test
 yarn build
 yarn add --dev pg-native
-db-migrate --config db-config.js --env prod up
+
+yarn list
+find .
+ls -la node_modules/.bin
+
+node_modules/.bin/db-migrate --config db-config.js --env prod up
 
 rm -rf build/src/frontend
 rm -rf build/views
