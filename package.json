@@ -19,6 +19,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "pg": "^7.8.0",
+    "reflect-metadata": "^0.1.12",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -60,7 +61,6 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-test-renderer": "^16.7.0",
-    "reflect-metadata": "^0.1.12",
     "sass-loader": "^7.1.0",
     "supertest": "^3.4.1",
     "terser-webpack-plugin": "^1.2.1",

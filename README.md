@@ -6,3 +6,4 @@
 [![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=lencse_yearinpixels&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=lencse_yearinpixels)
 [![Quality gate](https://sonarcloud.io/api/project_badges/measure?project=lencse_yearinpixels&metric=alert_status)](https://sonarcloud.io/dashboard?id=lencse_yearinpixels)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=lencse_yearinpixels&metric=coverage)](https://sonarcloud.io/dashboard?id=lencse_yearinpixels)
+[![Known Vulnerabilities](https://snyk.io/test/github/lencse/yearinpixels/badge.svg?targetFile=package.json)](https://snyk.io/test/github/lencse/yearinpixels?targetFile=package.json)
