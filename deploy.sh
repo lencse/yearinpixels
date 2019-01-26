@@ -10,8 +10,8 @@ rm -rf test
 yarn build
 yarn add --dev pg-native
 
-yarn list
-find .
+# yarn list
+# find .
 ls -la node_modules/.bin
 
 node_modules/.bin/db-migrate --config db-config.js --env prod up
