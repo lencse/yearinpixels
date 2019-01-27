@@ -2,6 +2,7 @@ import { Container } from 'inversify'
 import { TYPES, SCALARS } from './params'
 import Store from '../store/Store'
 import App from '../app/App'
+import DataProvider from '../state/DataProvider'
 
 class DIC {
 
