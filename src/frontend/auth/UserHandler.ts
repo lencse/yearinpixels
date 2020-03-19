@@ -19,14 +19,14 @@ export default class UserHandler implements Subscriber {
         if (state.user.id === '') {
             const fromStorageUserId = window.localStorage.getItem('userId')
             if (!fromStorageUserId) {
-                fetch('/api/user', {
-                    method: 'POST'
-                }).then(
-                    (resp) => resp.json()
-                ).then((data) => {
-                    window.localStorage.setItem('userId', data.id)
-                    return data.id
-                }).then(this.user.bind(this))
+                // fetch('/api/user', {
+                //     method: 'POST'
+                // }).then(
+                //     (resp) => resp.json()
+                // ).then((data) => {
+                //     window.localStorage.setItem('userId', data.id)
+                //     return data.id
+                // }).then(this.user.bind(this))
             } else {
                 fetch(`/api/user/${fromStorageUserId}`, {
                     method: 'GET'
